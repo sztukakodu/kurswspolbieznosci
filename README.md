@@ -3,7 +3,7 @@
 ## Tydzień 4
 https://edu.sztukakodu.pl/kurs-wspolbieznosci/tydzien-4-pule-watkow/lekcja-11/
 
-### Zadanie 1
+### Zadanie 1 - BoundedThreadPool
 1. Stwórz pulę wątków, utrzymującą od 1 do 4 wątków.
 2. Żywotność oczekujących wątków to 30 sekund.
 3. Na wykonanie może czekać maksymalnie 10 zadań.
