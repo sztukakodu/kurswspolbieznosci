@@ -7,11 +7,13 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static pl.sztukakodu.concurrency.ThreadUtils.println;
+import static pl.sztukakodu.concurrency.ThreadUtils.sleep;
 
 public class BoundedThreadPoolTest {
     @Test
     public void shouldShutdownAfterFailedTasks() throws InterruptedException {
-        Runnable sleepingTask = new SleepingTask(1);
+        Runnable sleepingTask = new SleepingTask(1_000);
 
         ExecutorService pool = BoundedThreadPool.create(1, 4, 30, TimeUnit.SECONDS, 10);
         while (!pool.isShutdown()) {
@@ -25,26 +27,18 @@ public class BoundedThreadPoolTest {
 
     private static class SleepingTask implements Runnable {
         private static final AtomicInteger COUNTER = new AtomicInteger(1);
-        private final int sleepSeconds;
+        private final int sleepMillis;
 
-        public SleepingTask(int sleepSeconds) {
-            this.sleepSeconds = sleepSeconds;
+        public SleepingTask(int sleepMillis) {
+            this.sleepMillis = sleepMillis;
         }
 
         @Override
         public void run() {
             int taskId = COUNTER.getAndIncrement();
-            System.out.println(Thread.currentThread().getName() + ":: Starting long task... #" + taskId);
-            deepSleep();
-            System.out.println(Thread.currentThread().getName() + ":: Done #" + taskId);
-        }
-
-        private void deepSleep() {
-            try {
-                TimeUnit.SECONDS.sleep(sleepSeconds);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            println("Starting long task... #" + taskId);
+            sleep(sleepMillis);
+            println("Done #" + taskId);
         }
     }
 } 
