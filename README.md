@@ -11,15 +11,18 @@ Szczegóły i hasło [znajdziesz tutaj](https://edu.sztukakodu.pl/kurs-wspolbiez
 
 https://edu.sztukakodu.pl/kurs-wspolbieznosci/tydzien-2/lekcja-12-praca-domowa/
 
+### Zadanie - DataSharing
+
 1. Napisz prostą aplikację, która korzysta z kilku wątków.
 2. W aplikacji jest jedna współdzielona liczba.
-3. Stwórz wątek T1, który generuje losową wartość od 1 do 50 i zapisuje ją do współdzielonej liczby.
-4. Wątek T2, generujący wartość od 100 do 500 i też zapisujący ją do współdzielonej liczby.
-5. Uwaga - do liczby można pisać, tylko gdy ta jest null-em. Gdy ta jest wypełniona, wątki muszą czekać.
-6. Wątek T3, który czyta tę liczbę i liczy sumę kolejnych liczb od 1 do tej liczby.
+3. Stwórz wątek W1, który generuje losową wartość od 1 do 50 i zapisuje ją do współdzielonej liczby.
+4. Wątek W2, generujący wartość od 100 do 500 i też zapisujący ją do współdzielonej liczby.
+5. Uwaga - do liczby można pisać, tylko gdy ta jest `null`-em. Gdy ta jest wypełniona, wątki muszą czekać.
+6. Wątek R1, który czyta tę liczbę i liczy sumę kolejnych liczb od 1 do tej liczby.
    1. Np. dla liczby 5 liczy sumę 1+2+3+4+5.
    2. Gdy odczyta tę liczbę, ma ją wyzerować (ustawić na `null`).
-7. Wątek T4 monitorujący pozostałe wątki. Co 1 sekundę wypisuje na konsolę, w jakim stanie są te wątki.
+   3. Wątek czeka, gdy liczba nie jest wypełniona.
+7. Wątek M1 monitorujący pozostałe wątki. Co 1 sekundę wypisuje na konsolę, w jakim stanie są te wątki.
 8. Po 30 sekundach program powinien zakończyć swoje działanie.
 
 ## Tydzień 3 - Synchronizacja
